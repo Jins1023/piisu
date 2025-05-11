@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ピースマネージャー</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+
+    #logo {
+      position: absolute;
+      width: 730px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* 上下にふわふわ動くアニメーション */
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-13px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 画像を表示 -->
+  <img id="logo" src="image/logo.png" alt="ロゴ">
+
+  <script>
+    const logo = document.getElementById('logo');
+
+    // 画像の座標を自由に設定（例：x=150, y=200）
+    function setLogoPosition(x, y) {
+      logo.style.left = `${x}px`;
+      logo.style.top = `${y}px`;
+    }
+
+    // 例として初期位置を設定
+    setLogoPosition(360, 10);
+  </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>傾くだけの図形</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+
+    #shape {
+      position: absolute;
+      width: 136px;
+      animation: tilt 3s ease-in-out infinite;
+    }
+
+    /* 傾くだけのアニメーション */
+    @keyframes tilt {
+      0%   { transform: rotate(0deg); }
+      50%  { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 画像を表示 -->
+  <img id="shape" src="image/図形1.png" alt="図形1">
+
+  <script>
+    const shape = document.getElementById('shape');
+
+    // 座標を変更する関数
+    function setShapePosition(x, y) {
+      shape.style.left = `${x}px`;
+      shape.style.top = `${y}px`;
+    }
+
+    // 任意の座標に設定
+    const X座標 = 70;
+    const Y座標 = 150;
+    setShapePosition(X座標, Y座標);
+  </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>図形2</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+
+    #shape2 {
+      position: absolute;
+      width: 264px;
+      animation: tiltReverse 3s ease-in-out infinite;
+    }
+
+    /* 逆回転アニメーション */
+    @keyframes tiltReverse {
+      0%   { transform: rotate(0deg); }
+      50%  { transform: rotate(-10deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 図形2（逆回転） -->
+  <img id="shape2" src="image/図形2.png" alt="図形2">
+
+  <script>
+    // 図形2の座標を設定する
+    function setShapePosition(x, y) {
+      const element = document.getElementById('shape2');
+      element.style.left = `${x}px`;
+      element.style.top = `${y}px`;
+    }
+
+    // 任意の座標に設定（例）
+    setShapePosition(1250, 370);
+  </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>背景画像表示</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+
+    /* 背景画像のスタイル */
+    #frame {
+      position: absolute;
+      top: 150px;     /* Y座標を調整 */
+      left: 400px;    /* X座標を調整 */
+      width: 41vw; /* 幅を調整 */
+      height: auto; /* 高さは比率維持 */
+      z-index: 0;   /* 一番後ろに表示 */
+      pointer-events: none; /* マウスイベントを無効化 */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 背景として表示する画像 -->
+  <img id="frame" src="image/ピースフレーム.png" alt="ピースフレーム">
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カウントとアニメーション</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    #counter {
+      position: absolute;
+      top: 252px;
+      left: 578px;
+      font-size: 130px;
+      font-weight: bold;
+      color: #ffffff;
+      transition: transform 0.2s ease;
+    }
+
+    .bounce {
+      animation: bounceAnim 0.3s ease;
+    }
+
+    @keyframes bounceAnim {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .button {
+      position: absolute;
+      width: 270px;
+      height: auto;
+      cursor: pointer;
+    }
+
+    #eraser { top: 458px; left: 432px; }
+    #yobikake { top: 458px; left: 728px; }
+    #sonota { top: 567px; left: 432px; }
+    #herasu { top: 567px; left: 728px; }
+
+    .input-label {
+      position: absolute;
+      color: #000;
+      font-weight: bold;
+    }
+
+    #sonotaInputLabel {
+      top: 720px;
+      left: 870px;
+    }
+
+    #sonotaInput {
+      position: absolute;
+      top: 605px;
+      left: 1315px;
+      width: 170px;
+      height: 41px;
+      resize: both;
+      overflow: auto;
+    }
+
+    #herasuInputLabel {
+      top: 720px;
+      left: 1190px;
+    }
+
+    #herasuInput {
+      position: absolute;
+      top: 669px;
+      left: 1315px;
+      width: 170px;
+      height: 41px;
+      resize: both;
+      overflow: auto;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="counter">0</div>
+  <img id="eraser" src="image/黒板消し1.png" alt="黒板消し" class="button">
+  <img id="yobikake" src="image/呼びかけ1.png" alt="呼びかけ" class="button">
+  <img id="sonota" src="image/その他1.png" alt="その他" class="button">
+  <img id="herasu" src="image/減らす1.png" alt="減らす" class="button">
+  <div id="sonotaInputLabel"></div>
+  <input type="number" id="sonotaInput" value="1">
+  <div id="herasuInputLabel"></div>
+  <input type="number" id="herasuInput" value="1">
+  <audio id="coinSound" src="image/coin.mp3"></audio>
+  <audio id="heruSound" src="image/減る.mp3"></audio>
+
+  <script>
+    const counter = document.getElementById('counter');
+    let count = parseInt(localStorage.getItem('count') || '0');
+    counter.textContent = count;
+
+    function updateCount(newValue) {
+      count = newValue;
+      counter.textContent = count;
+      localStorage.setItem('count', count);
+      counter.classList.add('bounce');
+      setTimeout(() => counter.classList.remove('bounce'), 300);
+    }
+
+    function playSound(audioId, times) {
+      for (let i = 0; i < times; i++) {
+        const audio = document.getElementById(audioId).cloneNode();
+        audio.play();
+      }
+    }
+
+    const eraser = document.getElementById('eraser');
+    eraser.addEventListener('mouseover', () => eraser.src = 'image/黒板消し2.png');
+    eraser.addEventListener('mouseout', () => eraser.src = 'image/黒板消し1.png');
+    eraser.addEventListener('click', () => {
+      updateCount(count + 1);
+      playSound('coinSound', 1);
+    });
+
+    const yobikake = document.getElementById('yobikake');
+    yobikake.addEventListener('mouseover', () => yobikake.src = 'image/呼びかけ2.png');
+    yobikake.addEventListener('mouseout', () => yobikake.src = 'image/呼びかけ1.png');
+    yobikake.addEventListener('click', () => {
+      updateCount(count + 1);
+      playSound('coinSound', 1);
+    });
+
+    const sonota = document.getElementById('sonota');
+    const sonotaInput = document.getElementById('sonotaInput');
+    sonota.addEventListener('mouseover', () => sonota.src = 'image/その他2.png');
+    sonota.addEventListener('mouseout', () => sonota.src = 'image/その他1.png');
+    sonota.addEventListener('click', () => {
+      const val = parseInt(sonotaInput.value) || 1;
+      updateCount(count + val);
+      playSound('coinSound', val);
+    });
+
+    const herasu = document.getElementById('herasu');
+    const herasuInput = document.getElementById('herasuInput');
+    herasu.addEventListener('mouseover', () => herasu.src = 'image/減らす2.png');
+    herasu.addEventListener('mouseout', () => herasu.src = 'image/減らす1.png');
+    herasu.addEventListener('click', () => {
+      const val = parseInt(herasuInput.value) || 1;
+      updateCount(count - val);
+      playSound('heruSound', val);
+    });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>増加量画像表示</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    /* 増加量画像を表示 */
+    #increaseAmount {
+      position: absolute;
+      top: 583px;   /* 任意の座標 */
+      left: 1033px;  /* 任意の座標 */
+      width: 273px; /* 任意のサイズ */
+      height: auto; /* 比率を保つ */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 増加量画像 -->
+  <img id="increaseAmount" src="image/増加量.png" alt="増加量">
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>減少量画像表示</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    /* 減少量画像を表示 */
+    #decreaseAmount {
+      position: absolute;
+      top: 646px;   /* 任意の座標 */
+      left: 1154px;  /* 任意の座標 */
+      width: 167px; /* 任意のサイズ */
+      height: auto; /* 比率を保つ */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 減少量画像 -->
+  <img id="decreaseAmount" src="image/減少量.png" alt="減少量">
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>テキスト表示</title>
+  <style>
+    #text {
+      position: absolute;
+      left: 11px;     /* X座標 */
+      top: 731px;      /* Y座標 */
+      font-size: 19px; /* フォントサイズ */
+      color: #141414;  /* 色 */
+    }
+  </style>
+</head>
+<body>
+  <div id="text">バージョン 1.0</div>
+</body>
+</html>
